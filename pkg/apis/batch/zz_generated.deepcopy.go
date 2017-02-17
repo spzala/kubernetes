@@ -36,41 +36,43 @@ func init() {
 // to allow building arbitrary schemes.
 func RegisterDeepCopies(scheme *runtime.Scheme) error {
 	return scheme.AddGeneratedDeepCopyFuncs(
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_batch_CronJob, InType: reflect.TypeOf(&CronJob{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_batch_CronJobList, InType: reflect.TypeOf(&CronJobList{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_batch_CronJobSpec, InType: reflect.TypeOf(&CronJobSpec{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_batch_CronJobStatus, InType: reflect.TypeOf(&CronJobStatus{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_batch_Job, InType: reflect.TypeOf(&Job{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_batch_JobCondition, InType: reflect.TypeOf(&JobCondition{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_batch_JobList, InType: reflect.TypeOf(&JobList{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_batch_JobSpec, InType: reflect.TypeOf(&JobSpec{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_batch_JobStatus, InType: reflect.TypeOf(&JobStatus{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_batch_JobTemplate, InType: reflect.TypeOf(&JobTemplate{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_batch_JobTemplateSpec, InType: reflect.TypeOf(&JobTemplateSpec{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopybatch_CronJob, InType: reflect.TypeOf(&CronJob{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopybatch_CronJobList, InType: reflect.TypeOf(&CronJobList{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopybatch_CronJobSpec, InType: reflect.TypeOf(&CronJobSpec{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopybatch_CronJobStatus, InType: reflect.TypeOf(&CronJobStatus{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopybatch_Job, InType: reflect.TypeOf(&Job{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopybatch_JobCondition, InType: reflect.TypeOf(&JobCondition{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopybatch_JobList, InType: reflect.TypeOf(&JobList{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopybatch_JobSpec, InType: reflect.TypeOf(&JobSpec{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopybatch_JobStatus, InType: reflect.TypeOf(&JobStatus{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopybatch_JobTemplate, InType: reflect.TypeOf(&JobTemplate{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopybatch_JobTemplateSpec, InType: reflect.TypeOf(&JobTemplateSpec{})},
 	)
 }
 
-func DeepCopy_batch_CronJob(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopybatch_CronJob ...
+func DeepCopybatch_CronJob(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*CronJob)
 		out := out.(*CronJob)
 		*out = *in
-		if newVal, err := c.DeepCopy(&in.ObjectMeta); err != nil {
-			return err
-		} else {
-			out.ObjectMeta = *newVal.(*v1.ObjectMeta)
-		}
-		if err := DeepCopy_batch_CronJobSpec(&in.Spec, &out.Spec, c); err != nil {
+		newVal, err := c.DeepCopy(&in.ObjectMeta)
+		if err != nil {
 			return err
 		}
-		if err := DeepCopy_batch_CronJobStatus(&in.Status, &out.Status, c); err != nil {
+		out.ObjectMeta = *newVal.(*v1.ObjectMeta)
+		if err := DeepCopybatch_CronJobSpec(&in.Spec, &out.Spec, c); err != nil {
+			return err
+		}
+		if err := DeepCopybatch_CronJobStatus(&in.Status, &out.Status, c); err != nil {
 			return err
 		}
 		return nil
 	}
 }
 
-func DeepCopy_batch_CronJobList(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopybatch_CronJobList ...
+func DeepCopybatch_CronJobList(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*CronJobList)
 		out := out.(*CronJobList)
@@ -79,7 +81,7 @@ func DeepCopy_batch_CronJobList(in interface{}, out interface{}, c *conversion.C
 			in, out := &in.Items, &out.Items
 			*out = make([]CronJob, len(*in))
 			for i := range *in {
-				if err := DeepCopy_batch_CronJob(&(*in)[i], &(*out)[i], c); err != nil {
+				if err := DeepCopybatch_CronJob(&(*in)[i], &(*out)[i], c); err != nil {
 					return err
 				}
 			}
@@ -88,7 +90,8 @@ func DeepCopy_batch_CronJobList(in interface{}, out interface{}, c *conversion.C
 	}
 }
 
-func DeepCopy_batch_CronJobSpec(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopybatch_CronJobSpec ...
+func DeepCopybatch_CronJobSpec(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*CronJobSpec)
 		out := out.(*CronJobSpec)
@@ -103,14 +106,15 @@ func DeepCopy_batch_CronJobSpec(in interface{}, out interface{}, c *conversion.C
 			*out = new(bool)
 			**out = **in
 		}
-		if err := DeepCopy_batch_JobTemplateSpec(&in.JobTemplate, &out.JobTemplate, c); err != nil {
+		if err := DeepCopybatch_JobTemplateSpec(&in.JobTemplate, &out.JobTemplate, c); err != nil {
 			return err
 		}
 		return nil
 	}
 }
 
-func DeepCopy_batch_CronJobStatus(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopybatch_CronJobStatus ...
+func DeepCopybatch_CronJobStatus(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*CronJobStatus)
 		out := out.(*CronJobStatus)
@@ -129,27 +133,29 @@ func DeepCopy_batch_CronJobStatus(in interface{}, out interface{}, c *conversion
 	}
 }
 
-func DeepCopy_batch_Job(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopybatch_Job ...
+func DeepCopybatch_Job(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*Job)
 		out := out.(*Job)
 		*out = *in
-		if newVal, err := c.DeepCopy(&in.ObjectMeta); err != nil {
-			return err
-		} else {
-			out.ObjectMeta = *newVal.(*v1.ObjectMeta)
-		}
-		if err := DeepCopy_batch_JobSpec(&in.Spec, &out.Spec, c); err != nil {
+		newVal, err := c.DeepCopy(&in.ObjectMeta)
+		if err != nil {
 			return err
 		}
-		if err := DeepCopy_batch_JobStatus(&in.Status, &out.Status, c); err != nil {
+		out.ObjectMeta = *newVal.(*v1.ObjectMeta)
+		if err := DeepCopybatch_JobSpec(&in.Spec, &out.Spec, c); err != nil {
+			return err
+		}
+		if err := DeepCopybatch_JobStatus(&in.Status, &out.Status, c); err != nil {
 			return err
 		}
 		return nil
 	}
 }
 
-func DeepCopy_batch_JobCondition(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopybatch_JobCondition ...
+func DeepCopybatch_JobCondition(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*JobCondition)
 		out := out.(*JobCondition)
@@ -160,7 +166,8 @@ func DeepCopy_batch_JobCondition(in interface{}, out interface{}, c *conversion.
 	}
 }
 
-func DeepCopy_batch_JobList(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopybatch_JobList ...
+func DeepCopybatch_JobList(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*JobList)
 		out := out.(*JobList)
@@ -169,7 +176,7 @@ func DeepCopy_batch_JobList(in interface{}, out interface{}, c *conversion.Clone
 			in, out := &in.Items, &out.Items
 			*out = make([]Job, len(*in))
 			for i := range *in {
-				if err := DeepCopy_batch_Job(&(*in)[i], &(*out)[i], c); err != nil {
+				if err := DeepCopybatch_Job(&(*in)[i], &(*out)[i], c); err != nil {
 					return err
 				}
 			}
@@ -178,7 +185,8 @@ func DeepCopy_batch_JobList(in interface{}, out interface{}, c *conversion.Clone
 	}
 }
 
-func DeepCopy_batch_JobSpec(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopybatch_JobSpec ...
+func DeepCopybatch_JobSpec(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*JobSpec)
 		out := out.(*JobSpec)
@@ -200,25 +208,27 @@ func DeepCopy_batch_JobSpec(in interface{}, out interface{}, c *conversion.Clone
 		}
 		if in.Selector != nil {
 			in, out := &in.Selector, &out.Selector
-			if newVal, err := c.DeepCopy(*in); err != nil {
+			newVal, err := c.DeepCopy(*in)
+			if err != nil {
 				return err
-			} else {
-				*out = newVal.(*v1.LabelSelector)
 			}
+			*out = newVal.(*v1.LabelSelector)
+
 		}
 		if in.ManualSelector != nil {
 			in, out := &in.ManualSelector, &out.ManualSelector
 			*out = new(bool)
 			**out = **in
 		}
-		if err := api.DeepCopy_api_PodTemplateSpec(&in.Template, &out.Template, c); err != nil {
+		if err := api.DeepCopyapi_PodTemplateSpec(&in.Template, &out.Template, c); err != nil {
 			return err
 		}
 		return nil
 	}
 }
 
-func DeepCopy_batch_JobStatus(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopybatch_JobStatus ...
+func DeepCopybatch_JobStatus(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*JobStatus)
 		out := out.(*JobStatus)
@@ -227,7 +237,7 @@ func DeepCopy_batch_JobStatus(in interface{}, out interface{}, c *conversion.Clo
 			in, out := &in.Conditions, &out.Conditions
 			*out = make([]JobCondition, len(*in))
 			for i := range *in {
-				if err := DeepCopy_batch_JobCondition(&(*in)[i], &(*out)[i], c); err != nil {
+				if err := DeepCopybatch_JobCondition(&(*in)[i], &(*out)[i], c); err != nil {
 					return err
 				}
 			}
@@ -246,34 +256,36 @@ func DeepCopy_batch_JobStatus(in interface{}, out interface{}, c *conversion.Clo
 	}
 }
 
-func DeepCopy_batch_JobTemplate(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopybatch_JobTemplate ...
+func DeepCopybatch_JobTemplate(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*JobTemplate)
 		out := out.(*JobTemplate)
 		*out = *in
-		if newVal, err := c.DeepCopy(&in.ObjectMeta); err != nil {
+		newVal, err := c.DeepCopy(&in.ObjectMeta)
+		if err != nil {
 			return err
-		} else {
-			out.ObjectMeta = *newVal.(*v1.ObjectMeta)
 		}
-		if err := DeepCopy_batch_JobTemplateSpec(&in.Template, &out.Template, c); err != nil {
+		out.ObjectMeta = *newVal.(*v1.ObjectMeta)
+		if err := DeepCopybatch_JobTemplateSpec(&in.Template, &out.Template, c); err != nil {
 			return err
 		}
 		return nil
 	}
 }
 
-func DeepCopy_batch_JobTemplateSpec(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopybatch_JobTemplateSpec ...
+func DeepCopybatch_JobTemplateSpec(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*JobTemplateSpec)
 		out := out.(*JobTemplateSpec)
 		*out = *in
-		if newVal, err := c.DeepCopy(&in.ObjectMeta); err != nil {
+		newVal, err := c.DeepCopy(&in.ObjectMeta)
+		if err != nil {
 			return err
-		} else {
-			out.ObjectMeta = *newVal.(*v1.ObjectMeta)
 		}
-		if err := DeepCopy_batch_JobSpec(&in.Spec, &out.Spec, c); err != nil {
+		out.ObjectMeta = *newVal.(*v1.ObjectMeta)
+		if err := DeepCopybatch_JobSpec(&in.Spec, &out.Spec, c); err != nil {
 			return err
 		}
 		return nil

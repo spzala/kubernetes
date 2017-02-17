@@ -35,57 +35,61 @@ func init() {
 // to allow building arbitrary schemes.
 func RegisterDeepCopies(scheme *runtime.Scheme) error {
 	return scheme.AddGeneratedDeepCopyFuncs(
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_v1beta1_Eviction, InType: reflect.TypeOf(&Eviction{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_v1beta1_PodDisruptionBudget, InType: reflect.TypeOf(&PodDisruptionBudget{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_v1beta1_PodDisruptionBudgetList, InType: reflect.TypeOf(&PodDisruptionBudgetList{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_v1beta1_PodDisruptionBudgetSpec, InType: reflect.TypeOf(&PodDisruptionBudgetSpec{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_v1beta1_PodDisruptionBudgetStatus, InType: reflect.TypeOf(&PodDisruptionBudgetStatus{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyv1beta1_Eviction, InType: reflect.TypeOf(&Eviction{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyv1beta1_PodDisruptionBudget, InType: reflect.TypeOf(&PodDisruptionBudget{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyv1beta1_PodDisruptionBudgetList, InType: reflect.TypeOf(&PodDisruptionBudgetList{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyv1beta1_PodDisruptionBudgetSpec, InType: reflect.TypeOf(&PodDisruptionBudgetSpec{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyv1beta1_PodDisruptionBudgetStatus, InType: reflect.TypeOf(&PodDisruptionBudgetStatus{})},
 	)
 }
 
-func DeepCopy_v1beta1_Eviction(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyv1beta1_Eviction ...
+func DeepCopyv1beta1_Eviction(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*Eviction)
 		out := out.(*Eviction)
 		*out = *in
-		if newVal, err := c.DeepCopy(&in.ObjectMeta); err != nil {
+		newVal, err := c.DeepCopy(&in.ObjectMeta)
+		if err != nil {
 			return err
-		} else {
-			out.ObjectMeta = *newVal.(*v1.ObjectMeta)
 		}
+		out.ObjectMeta = *newVal.(*v1.ObjectMeta)
 		if in.DeleteOptions != nil {
 			in, out := &in.DeleteOptions, &out.DeleteOptions
-			if newVal, err := c.DeepCopy(*in); err != nil {
+			newVal, err := c.DeepCopy(*in)
+			if err != nil {
 				return err
-			} else {
-				*out = newVal.(*v1.DeleteOptions)
 			}
+			*out = newVal.(*v1.DeleteOptions)
+
 		}
 		return nil
 	}
 }
 
-func DeepCopy_v1beta1_PodDisruptionBudget(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyv1beta1_PodDisruptionBudget ...
+func DeepCopyv1beta1_PodDisruptionBudget(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*PodDisruptionBudget)
 		out := out.(*PodDisruptionBudget)
 		*out = *in
-		if newVal, err := c.DeepCopy(&in.ObjectMeta); err != nil {
-			return err
-		} else {
-			out.ObjectMeta = *newVal.(*v1.ObjectMeta)
-		}
-		if err := DeepCopy_v1beta1_PodDisruptionBudgetSpec(&in.Spec, &out.Spec, c); err != nil {
+		newVal, err := c.DeepCopy(&in.ObjectMeta)
+		if err != nil {
 			return err
 		}
-		if err := DeepCopy_v1beta1_PodDisruptionBudgetStatus(&in.Status, &out.Status, c); err != nil {
+		out.ObjectMeta = *newVal.(*v1.ObjectMeta)
+		if err := DeepCopyv1beta1_PodDisruptionBudgetSpec(&in.Spec, &out.Spec, c); err != nil {
+			return err
+		}
+		if err := DeepCopyv1beta1_PodDisruptionBudgetStatus(&in.Status, &out.Status, c); err != nil {
 			return err
 		}
 		return nil
 	}
 }
 
-func DeepCopy_v1beta1_PodDisruptionBudgetList(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyv1beta1_PodDisruptionBudgetList ...
+func DeepCopyv1beta1_PodDisruptionBudgetList(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*PodDisruptionBudgetList)
 		out := out.(*PodDisruptionBudgetList)
@@ -94,7 +98,7 @@ func DeepCopy_v1beta1_PodDisruptionBudgetList(in interface{}, out interface{}, c
 			in, out := &in.Items, &out.Items
 			*out = make([]PodDisruptionBudget, len(*in))
 			for i := range *in {
-				if err := DeepCopy_v1beta1_PodDisruptionBudget(&(*in)[i], &(*out)[i], c); err != nil {
+				if err := DeepCopyv1beta1_PodDisruptionBudget(&(*in)[i], &(*out)[i], c); err != nil {
 					return err
 				}
 			}
@@ -103,24 +107,27 @@ func DeepCopy_v1beta1_PodDisruptionBudgetList(in interface{}, out interface{}, c
 	}
 }
 
-func DeepCopy_v1beta1_PodDisruptionBudgetSpec(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyv1beta1_PodDisruptionBudgetSpec ...
+func DeepCopyv1beta1_PodDisruptionBudgetSpec(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*PodDisruptionBudgetSpec)
 		out := out.(*PodDisruptionBudgetSpec)
 		*out = *in
 		if in.Selector != nil {
 			in, out := &in.Selector, &out.Selector
-			if newVal, err := c.DeepCopy(*in); err != nil {
+			newVal, err := c.DeepCopy(*in)
+			if err != nil {
 				return err
-			} else {
-				*out = newVal.(*v1.LabelSelector)
 			}
+			*out = newVal.(*v1.LabelSelector)
+
 		}
 		return nil
 	}
 }
 
-func DeepCopy_v1beta1_PodDisruptionBudgetStatus(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyv1beta1_PodDisruptionBudgetStatus ...
+func DeepCopyv1beta1_PodDisruptionBudgetStatus(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*PodDisruptionBudgetStatus)
 		out := out.(*PodDisruptionBudgetStatus)

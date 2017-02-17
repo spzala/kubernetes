@@ -28,20 +28,5 @@ import (
 // Public to allow building arbitrary schemes.
 // All generated defaulters are covering - they call all nested defaulters.
 func RegisterDefaults(scheme *runtime.Scheme) error {
-	scheme.AddTypeDefaultingFunc(&HorizontalPodAutoscaler{}, func(obj interface{}) { SetObjectDefaults_HorizontalPodAutoscaler(obj.(*HorizontalPodAutoscaler)) })
-	scheme.AddTypeDefaultingFunc(&HorizontalPodAutoscalerList{}, func(obj interface{}) {
-		SetObjectDefaults_HorizontalPodAutoscalerList(obj.(*HorizontalPodAutoscalerList))
-	})
 	return nil
-}
-
-func SetObjectDefaults_HorizontalPodAutoscaler(in *HorizontalPodAutoscaler) {
-	SetDefaults_HorizontalPodAutoscaler(in)
-}
-
-func SetObjectDefaults_HorizontalPodAutoscalerList(in *HorizontalPodAutoscalerList) {
-	for i := range in.Items {
-		a := &in.Items[i]
-		SetObjectDefaults_HorizontalPodAutoscaler(a)
-	}
 }

@@ -35,27 +35,28 @@ func init() {
 // to allow building arbitrary schemes.
 func RegisterDeepCopies(scheme *runtime.Scheme) error {
 	return scheme.AddGeneratedDeepCopyFuncs(
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_componentconfig_AdmissionConfiguration, InType: reflect.TypeOf(&AdmissionConfiguration{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_componentconfig_AdmissionPluginConfiguration, InType: reflect.TypeOf(&AdmissionPluginConfiguration{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_componentconfig_IPVar, InType: reflect.TypeOf(&IPVar{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_componentconfig_KubeControllerManagerConfiguration, InType: reflect.TypeOf(&KubeControllerManagerConfiguration{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_componentconfig_KubeProxyConfiguration, InType: reflect.TypeOf(&KubeProxyConfiguration{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_componentconfig_KubeSchedulerConfiguration, InType: reflect.TypeOf(&KubeSchedulerConfiguration{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_componentconfig_KubeletAnonymousAuthentication, InType: reflect.TypeOf(&KubeletAnonymousAuthentication{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_componentconfig_KubeletAuthentication, InType: reflect.TypeOf(&KubeletAuthentication{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_componentconfig_KubeletAuthorization, InType: reflect.TypeOf(&KubeletAuthorization{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_componentconfig_KubeletConfiguration, InType: reflect.TypeOf(&KubeletConfiguration{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_componentconfig_KubeletWebhookAuthentication, InType: reflect.TypeOf(&KubeletWebhookAuthentication{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_componentconfig_KubeletWebhookAuthorization, InType: reflect.TypeOf(&KubeletWebhookAuthorization{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_componentconfig_KubeletX509Authentication, InType: reflect.TypeOf(&KubeletX509Authentication{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_componentconfig_LeaderElectionConfiguration, InType: reflect.TypeOf(&LeaderElectionConfiguration{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_componentconfig_PersistentVolumeRecyclerConfiguration, InType: reflect.TypeOf(&PersistentVolumeRecyclerConfiguration{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_componentconfig_PortRangeVar, InType: reflect.TypeOf(&PortRangeVar{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_componentconfig_VolumeConfiguration, InType: reflect.TypeOf(&VolumeConfiguration{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopycomponentconfig_AdmissionConfiguration, InType: reflect.TypeOf(&AdmissionConfiguration{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopycomponentconfig_AdmissionPluginConfiguration, InType: reflect.TypeOf(&AdmissionPluginConfiguration{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopycomponentconfig_IPVar, InType: reflect.TypeOf(&IPVar{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopycomponentconfig_KubeControllerManagerConfiguration, InType: reflect.TypeOf(&KubeControllerManagerConfiguration{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopycomponentconfig_KubeProxyConfiguration, InType: reflect.TypeOf(&KubeProxyConfiguration{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopycomponentconfig_KubeSchedulerConfiguration, InType: reflect.TypeOf(&KubeSchedulerConfiguration{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopycomponentconfig_KubeletAnonymousAuthentication, InType: reflect.TypeOf(&KubeletAnonymousAuthentication{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopycomponentconfig_KubeletAuthentication, InType: reflect.TypeOf(&KubeletAuthentication{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopycomponentconfig_KubeletAuthorization, InType: reflect.TypeOf(&KubeletAuthorization{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopycomponentconfig_KubeletConfiguration, InType: reflect.TypeOf(&KubeletConfiguration{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopycomponentconfig_KubeletWebhookAuthentication, InType: reflect.TypeOf(&KubeletWebhookAuthentication{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopycomponentconfig_KubeletWebhookAuthorization, InType: reflect.TypeOf(&KubeletWebhookAuthorization{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopycomponentconfig_KubeletX509Authentication, InType: reflect.TypeOf(&KubeletX509Authentication{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopycomponentconfig_LeaderElectionConfiguration, InType: reflect.TypeOf(&LeaderElectionConfiguration{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopycomponentconfig_PersistentVolumeRecyclerConfiguration, InType: reflect.TypeOf(&PersistentVolumeRecyclerConfiguration{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopycomponentconfig_PortRangeVar, InType: reflect.TypeOf(&PortRangeVar{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopycomponentconfig_VolumeConfiguration, InType: reflect.TypeOf(&VolumeConfiguration{})},
 	)
 }
 
-func DeepCopy_componentconfig_AdmissionConfiguration(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopycomponentconfig_AdmissionConfiguration ...
+func DeepCopycomponentconfig_AdmissionConfiguration(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*AdmissionConfiguration)
 		out := out.(*AdmissionConfiguration)
@@ -64,7 +65,7 @@ func DeepCopy_componentconfig_AdmissionConfiguration(in interface{}, out interfa
 			in, out := &in.Plugins, &out.Plugins
 			*out = make([]AdmissionPluginConfiguration, len(*in))
 			for i := range *in {
-				if err := DeepCopy_componentconfig_AdmissionPluginConfiguration(&(*in)[i], &(*out)[i], c); err != nil {
+				if err := DeepCopycomponentconfig_AdmissionPluginConfiguration(&(*in)[i], &(*out)[i], c); err != nil {
 					return err
 				}
 			}
@@ -73,24 +74,26 @@ func DeepCopy_componentconfig_AdmissionConfiguration(in interface{}, out interfa
 	}
 }
 
-func DeepCopy_componentconfig_AdmissionPluginConfiguration(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopycomponentconfig_AdmissionPluginConfiguration ...
+func DeepCopycomponentconfig_AdmissionPluginConfiguration(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*AdmissionPluginConfiguration)
 		out := out.(*AdmissionPluginConfiguration)
 		*out = *in
 		// in.Configuration is kind 'Interface'
 		if in.Configuration != nil {
-			if newVal, err := c.DeepCopy(&in.Configuration); err != nil {
+			newVal, err := c.DeepCopy(&in.Configuration)
+			if err != nil {
 				return err
-			} else {
-				out.Configuration = *newVal.(*runtime.Object)
 			}
+			out.Configuration = *newVal.(*runtime.Object)
 		}
 		return nil
 	}
 }
 
-func DeepCopy_componentconfig_IPVar(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopycomponentconfig_IPVar ...
+func DeepCopycomponentconfig_IPVar(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*IPVar)
 		out := out.(*IPVar)
@@ -104,7 +107,8 @@ func DeepCopy_componentconfig_IPVar(in interface{}, out interface{}, c *conversi
 	}
 }
 
-func DeepCopy_componentconfig_KubeControllerManagerConfiguration(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopycomponentconfig_KubeControllerManagerConfiguration ...
+func DeepCopycomponentconfig_KubeControllerManagerConfiguration(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*KubeControllerManagerConfiguration)
 		out := out.(*KubeControllerManagerConfiguration)
@@ -118,7 +122,8 @@ func DeepCopy_componentconfig_KubeControllerManagerConfiguration(in interface{},
 	}
 }
 
-func DeepCopy_componentconfig_KubeProxyConfiguration(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopycomponentconfig_KubeProxyConfiguration ...
+func DeepCopycomponentconfig_KubeProxyConfiguration(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*KubeProxyConfiguration)
 		out := out.(*KubeProxyConfiguration)
@@ -137,7 +142,8 @@ func DeepCopy_componentconfig_KubeProxyConfiguration(in interface{}, out interfa
 	}
 }
 
-func DeepCopy_componentconfig_KubeSchedulerConfiguration(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopycomponentconfig_KubeSchedulerConfiguration ...
+func DeepCopycomponentconfig_KubeSchedulerConfiguration(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*KubeSchedulerConfiguration)
 		out := out.(*KubeSchedulerConfiguration)
@@ -146,7 +152,8 @@ func DeepCopy_componentconfig_KubeSchedulerConfiguration(in interface{}, out int
 	}
 }
 
-func DeepCopy_componentconfig_KubeletAnonymousAuthentication(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopycomponentconfig_KubeletAnonymousAuthentication ...
+func DeepCopycomponentconfig_KubeletAnonymousAuthentication(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*KubeletAnonymousAuthentication)
 		out := out.(*KubeletAnonymousAuthentication)
@@ -155,7 +162,8 @@ func DeepCopy_componentconfig_KubeletAnonymousAuthentication(in interface{}, out
 	}
 }
 
-func DeepCopy_componentconfig_KubeletAuthentication(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopycomponentconfig_KubeletAuthentication ...
+func DeepCopycomponentconfig_KubeletAuthentication(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*KubeletAuthentication)
 		out := out.(*KubeletAuthentication)
@@ -164,7 +172,8 @@ func DeepCopy_componentconfig_KubeletAuthentication(in interface{}, out interfac
 	}
 }
 
-func DeepCopy_componentconfig_KubeletAuthorization(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopycomponentconfig_KubeletAuthorization ...
+func DeepCopycomponentconfig_KubeletAuthorization(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*KubeletAuthorization)
 		out := out.(*KubeletAuthorization)
@@ -173,7 +182,8 @@ func DeepCopy_componentconfig_KubeletAuthorization(in interface{}, out interface
 	}
 }
 
-func DeepCopy_componentconfig_KubeletConfiguration(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopycomponentconfig_KubeletConfiguration ...
+func DeepCopycomponentconfig_KubeletConfiguration(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*KubeletConfiguration)
 		out := out.(*KubeletConfiguration)
@@ -197,7 +207,7 @@ func DeepCopy_componentconfig_KubeletConfiguration(in interface{}, out interface
 			in, out := &in.RegisterWithTaints, &out.RegisterWithTaints
 			*out = make([]api.Taint, len(*in))
 			for i := range *in {
-				if err := api.DeepCopy_api_Taint(&(*in)[i], &(*out)[i], c); err != nil {
+				if err := api.DeepCopyapi_Taint(&(*in)[i], &(*out)[i], c); err != nil {
 					return err
 				}
 			}
@@ -232,7 +242,8 @@ func DeepCopy_componentconfig_KubeletConfiguration(in interface{}, out interface
 	}
 }
 
-func DeepCopy_componentconfig_KubeletWebhookAuthentication(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopycomponentconfig_KubeletWebhookAuthentication ...
+func DeepCopycomponentconfig_KubeletWebhookAuthentication(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*KubeletWebhookAuthentication)
 		out := out.(*KubeletWebhookAuthentication)
@@ -241,7 +252,8 @@ func DeepCopy_componentconfig_KubeletWebhookAuthentication(in interface{}, out i
 	}
 }
 
-func DeepCopy_componentconfig_KubeletWebhookAuthorization(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopycomponentconfig_KubeletWebhookAuthorization ...
+func DeepCopycomponentconfig_KubeletWebhookAuthorization(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*KubeletWebhookAuthorization)
 		out := out.(*KubeletWebhookAuthorization)
@@ -250,7 +262,8 @@ func DeepCopy_componentconfig_KubeletWebhookAuthorization(in interface{}, out in
 	}
 }
 
-func DeepCopy_componentconfig_KubeletX509Authentication(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopycomponentconfig_KubeletX509Authentication ...
+func DeepCopycomponentconfig_KubeletX509Authentication(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*KubeletX509Authentication)
 		out := out.(*KubeletX509Authentication)
@@ -259,7 +272,8 @@ func DeepCopy_componentconfig_KubeletX509Authentication(in interface{}, out inte
 	}
 }
 
-func DeepCopy_componentconfig_LeaderElectionConfiguration(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopycomponentconfig_LeaderElectionConfiguration ...
+func DeepCopycomponentconfig_LeaderElectionConfiguration(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*LeaderElectionConfiguration)
 		out := out.(*LeaderElectionConfiguration)
@@ -268,7 +282,8 @@ func DeepCopy_componentconfig_LeaderElectionConfiguration(in interface{}, out in
 	}
 }
 
-func DeepCopy_componentconfig_PersistentVolumeRecyclerConfiguration(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopycomponentconfig_PersistentVolumeRecyclerConfiguration ...
+func DeepCopycomponentconfig_PersistentVolumeRecyclerConfiguration(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*PersistentVolumeRecyclerConfiguration)
 		out := out.(*PersistentVolumeRecyclerConfiguration)
@@ -277,7 +292,8 @@ func DeepCopy_componentconfig_PersistentVolumeRecyclerConfiguration(in interface
 	}
 }
 
-func DeepCopy_componentconfig_PortRangeVar(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopycomponentconfig_PortRangeVar ...
+func DeepCopycomponentconfig_PortRangeVar(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*PortRangeVar)
 		out := out.(*PortRangeVar)
@@ -291,7 +307,8 @@ func DeepCopy_componentconfig_PortRangeVar(in interface{}, out interface{}, c *c
 	}
 }
 
-func DeepCopy_componentconfig_VolumeConfiguration(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopycomponentconfig_VolumeConfiguration ...
+func DeepCopycomponentconfig_VolumeConfiguration(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*VolumeConfiguration)
 		out := out.(*VolumeConfiguration)

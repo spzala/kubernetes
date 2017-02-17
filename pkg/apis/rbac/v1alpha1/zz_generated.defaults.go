@@ -28,31 +28,5 @@ import (
 // Public to allow building arbitrary schemes.
 // All generated defaulters are covering - they call all nested defaulters.
 func RegisterDefaults(scheme *runtime.Scheme) error {
-	scheme.AddTypeDefaultingFunc(&ClusterRoleBinding{}, func(obj interface{}) { SetObjectDefaults_ClusterRoleBinding(obj.(*ClusterRoleBinding)) })
-	scheme.AddTypeDefaultingFunc(&ClusterRoleBindingList{}, func(obj interface{}) { SetObjectDefaults_ClusterRoleBindingList(obj.(*ClusterRoleBindingList)) })
-	scheme.AddTypeDefaultingFunc(&RoleBinding{}, func(obj interface{}) { SetObjectDefaults_RoleBinding(obj.(*RoleBinding)) })
-	scheme.AddTypeDefaultingFunc(&RoleBindingList{}, func(obj interface{}) { SetObjectDefaults_RoleBindingList(obj.(*RoleBindingList)) })
 	return nil
-}
-
-func SetObjectDefaults_ClusterRoleBinding(in *ClusterRoleBinding) {
-	SetDefaults_ClusterRoleBinding(in)
-}
-
-func SetObjectDefaults_ClusterRoleBindingList(in *ClusterRoleBindingList) {
-	for i := range in.Items {
-		a := &in.Items[i]
-		SetObjectDefaults_ClusterRoleBinding(a)
-	}
-}
-
-func SetObjectDefaults_RoleBinding(in *RoleBinding) {
-	SetDefaults_RoleBinding(in)
-}
-
-func SetObjectDefaults_RoleBindingList(in *RoleBindingList) {
-	for i := range in.Items {
-		a := &in.Items[i]
-		SetObjectDefaults_RoleBinding(a)
-	}
 }

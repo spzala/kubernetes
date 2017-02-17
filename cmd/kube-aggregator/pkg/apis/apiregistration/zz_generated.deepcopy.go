@@ -35,32 +35,34 @@ func init() {
 // to allow building arbitrary schemes.
 func RegisterDeepCopies(scheme *runtime.Scheme) error {
 	return scheme.AddGeneratedDeepCopyFuncs(
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_apiregistration_APIService, InType: reflect.TypeOf(&APIService{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_apiregistration_APIServiceList, InType: reflect.TypeOf(&APIServiceList{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_apiregistration_APIServiceSpec, InType: reflect.TypeOf(&APIServiceSpec{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_apiregistration_APIServiceStatus, InType: reflect.TypeOf(&APIServiceStatus{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_apiregistration_ServiceReference, InType: reflect.TypeOf(&ServiceReference{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyapiregistration_APIService, InType: reflect.TypeOf(&APIService{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyapiregistration_APIServiceList, InType: reflect.TypeOf(&APIServiceList{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyapiregistration_APIServiceSpec, InType: reflect.TypeOf(&APIServiceSpec{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyapiregistration_APIServiceStatus, InType: reflect.TypeOf(&APIServiceStatus{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyapiregistration_ServiceReference, InType: reflect.TypeOf(&ServiceReference{})},
 	)
 }
 
-func DeepCopy_apiregistration_APIService(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyapiregistration_APIService ...
+func DeepCopyapiregistration_APIService(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*APIService)
 		out := out.(*APIService)
 		*out = *in
-		if newVal, err := c.DeepCopy(&in.ObjectMeta); err != nil {
+		newVal, err := c.DeepCopy(&in.ObjectMeta)
+		if err != nil {
 			return err
-		} else {
-			out.ObjectMeta = *newVal.(*v1.ObjectMeta)
 		}
-		if err := DeepCopy_apiregistration_APIServiceSpec(&in.Spec, &out.Spec, c); err != nil {
+		out.ObjectMeta = *newVal.(*v1.ObjectMeta)
+		if err := DeepCopyapiregistration_APIServiceSpec(&in.Spec, &out.Spec, c); err != nil {
 			return err
 		}
 		return nil
 	}
 }
 
-func DeepCopy_apiregistration_APIServiceList(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyapiregistration_APIServiceList ...
+func DeepCopyapiregistration_APIServiceList(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*APIServiceList)
 		out := out.(*APIServiceList)
@@ -69,7 +71,7 @@ func DeepCopy_apiregistration_APIServiceList(in interface{}, out interface{}, c 
 			in, out := &in.Items, &out.Items
 			*out = make([]APIService, len(*in))
 			for i := range *in {
-				if err := DeepCopy_apiregistration_APIService(&(*in)[i], &(*out)[i], c); err != nil {
+				if err := DeepCopyapiregistration_APIService(&(*in)[i], &(*out)[i], c); err != nil {
 					return err
 				}
 			}
@@ -78,7 +80,8 @@ func DeepCopy_apiregistration_APIServiceList(in interface{}, out interface{}, c 
 	}
 }
 
-func DeepCopy_apiregistration_APIServiceSpec(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyapiregistration_APIServiceSpec ...
+func DeepCopyapiregistration_APIServiceSpec(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*APIServiceSpec)
 		out := out.(*APIServiceSpec)
@@ -92,7 +95,8 @@ func DeepCopy_apiregistration_APIServiceSpec(in interface{}, out interface{}, c 
 	}
 }
 
-func DeepCopy_apiregistration_APIServiceStatus(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyapiregistration_APIServiceStatus ...
+func DeepCopyapiregistration_APIServiceStatus(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*APIServiceStatus)
 		out := out.(*APIServiceStatus)
@@ -101,7 +105,8 @@ func DeepCopy_apiregistration_APIServiceStatus(in interface{}, out interface{}, 
 	}
 }
 
-func DeepCopy_apiregistration_ServiceReference(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyapiregistration_ServiceReference ...
+func DeepCopyapiregistration_ServiceReference(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*ServiceReference)
 		out := out.(*ServiceReference)

@@ -36,38 +36,40 @@ func init() {
 // to allow building arbitrary schemes.
 func RegisterDeepCopies(scheme *runtime.Scheme) error {
 	return scheme.AddGeneratedDeepCopyFuncs(
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_federation_Cluster, InType: reflect.TypeOf(&Cluster{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_federation_ClusterCondition, InType: reflect.TypeOf(&ClusterCondition{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_federation_ClusterList, InType: reflect.TypeOf(&ClusterList{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_federation_ClusterReplicaSetPreferences, InType: reflect.TypeOf(&ClusterReplicaSetPreferences{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_federation_ClusterSpec, InType: reflect.TypeOf(&ClusterSpec{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_federation_ClusterStatus, InType: reflect.TypeOf(&ClusterStatus{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_federation_FederatedReplicaSetPreferences, InType: reflect.TypeOf(&FederatedReplicaSetPreferences{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_federation_ServerAddressByClientCIDR, InType: reflect.TypeOf(&ServerAddressByClientCIDR{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyfederation_Cluster, InType: reflect.TypeOf(&Cluster{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyfederation_ClusterCondition, InType: reflect.TypeOf(&ClusterCondition{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyfederation_ClusterList, InType: reflect.TypeOf(&ClusterList{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyfederation_ClusterReplicaSetPreferences, InType: reflect.TypeOf(&ClusterReplicaSetPreferences{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyfederation_ClusterSpec, InType: reflect.TypeOf(&ClusterSpec{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyfederation_ClusterStatus, InType: reflect.TypeOf(&ClusterStatus{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyfederation_FederatedReplicaSetPreferences, InType: reflect.TypeOf(&FederatedReplicaSetPreferences{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyfederation_ServerAddressByClientCIDR, InType: reflect.TypeOf(&ServerAddressByClientCIDR{})},
 	)
 }
 
-func DeepCopy_federation_Cluster(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyfederation_Cluster ...
+func DeepCopyfederation_Cluster(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*Cluster)
 		out := out.(*Cluster)
 		*out = *in
-		if newVal, err := c.DeepCopy(&in.ObjectMeta); err != nil {
-			return err
-		} else {
-			out.ObjectMeta = *newVal.(*v1.ObjectMeta)
-		}
-		if err := DeepCopy_federation_ClusterSpec(&in.Spec, &out.Spec, c); err != nil {
+		newVal, err := c.DeepCopy(&in.ObjectMeta)
+		if err != nil {
 			return err
 		}
-		if err := DeepCopy_federation_ClusterStatus(&in.Status, &out.Status, c); err != nil {
+		out.ObjectMeta = *newVal.(*v1.ObjectMeta)
+		if err := DeepCopyfederation_ClusterSpec(&in.Spec, &out.Spec, c); err != nil {
+			return err
+		}
+		if err := DeepCopyfederation_ClusterStatus(&in.Status, &out.Status, c); err != nil {
 			return err
 		}
 		return nil
 	}
 }
 
-func DeepCopy_federation_ClusterCondition(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyfederation_ClusterCondition ...
+func DeepCopyfederation_ClusterCondition(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*ClusterCondition)
 		out := out.(*ClusterCondition)
@@ -78,7 +80,8 @@ func DeepCopy_federation_ClusterCondition(in interface{}, out interface{}, c *co
 	}
 }
 
-func DeepCopy_federation_ClusterList(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyfederation_ClusterList ...
+func DeepCopyfederation_ClusterList(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*ClusterList)
 		out := out.(*ClusterList)
@@ -87,7 +90,7 @@ func DeepCopy_federation_ClusterList(in interface{}, out interface{}, c *convers
 			in, out := &in.Items, &out.Items
 			*out = make([]Cluster, len(*in))
 			for i := range *in {
-				if err := DeepCopy_federation_Cluster(&(*in)[i], &(*out)[i], c); err != nil {
+				if err := DeepCopyfederation_Cluster(&(*in)[i], &(*out)[i], c); err != nil {
 					return err
 				}
 			}
@@ -96,7 +99,8 @@ func DeepCopy_federation_ClusterList(in interface{}, out interface{}, c *convers
 	}
 }
 
-func DeepCopy_federation_ClusterReplicaSetPreferences(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyfederation_ClusterReplicaSetPreferences ...
+func DeepCopyfederation_ClusterReplicaSetPreferences(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*ClusterReplicaSetPreferences)
 		out := out.(*ClusterReplicaSetPreferences)
@@ -110,7 +114,8 @@ func DeepCopy_federation_ClusterReplicaSetPreferences(in interface{}, out interf
 	}
 }
 
-func DeepCopy_federation_ClusterSpec(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyfederation_ClusterSpec ...
+func DeepCopyfederation_ClusterSpec(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*ClusterSpec)
 		out := out.(*ClusterSpec)
@@ -129,7 +134,8 @@ func DeepCopy_federation_ClusterSpec(in interface{}, out interface{}, c *convers
 	}
 }
 
-func DeepCopy_federation_ClusterStatus(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyfederation_ClusterStatus ...
+func DeepCopyfederation_ClusterStatus(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*ClusterStatus)
 		out := out.(*ClusterStatus)
@@ -138,7 +144,7 @@ func DeepCopy_federation_ClusterStatus(in interface{}, out interface{}, c *conve
 			in, out := &in.Conditions, &out.Conditions
 			*out = make([]ClusterCondition, len(*in))
 			for i := range *in {
-				if err := DeepCopy_federation_ClusterCondition(&(*in)[i], &(*out)[i], c); err != nil {
+				if err := DeepCopyfederation_ClusterCondition(&(*in)[i], &(*out)[i], c); err != nil {
 					return err
 				}
 			}
@@ -152,7 +158,8 @@ func DeepCopy_federation_ClusterStatus(in interface{}, out interface{}, c *conve
 	}
 }
 
-func DeepCopy_federation_FederatedReplicaSetPreferences(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyfederation_FederatedReplicaSetPreferences ...
+func DeepCopyfederation_FederatedReplicaSetPreferences(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*FederatedReplicaSetPreferences)
 		out := out.(*FederatedReplicaSetPreferences)
@@ -162,7 +169,7 @@ func DeepCopy_federation_FederatedReplicaSetPreferences(in interface{}, out inte
 			*out = make(map[string]ClusterReplicaSetPreferences)
 			for key, val := range *in {
 				newVal := new(ClusterReplicaSetPreferences)
-				if err := DeepCopy_federation_ClusterReplicaSetPreferences(&val, newVal, c); err != nil {
+				if err := DeepCopyfederation_ClusterReplicaSetPreferences(&val, newVal, c); err != nil {
 					return err
 				}
 				(*out)[key] = *newVal
@@ -172,7 +179,8 @@ func DeepCopy_federation_FederatedReplicaSetPreferences(in interface{}, out inte
 	}
 }
 
-func DeepCopy_federation_ServerAddressByClientCIDR(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyfederation_ServerAddressByClientCIDR ...
+func DeepCopyfederation_ServerAddressByClientCIDR(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*ServerAddressByClientCIDR)
 		out := out.(*ServerAddressByClientCIDR)

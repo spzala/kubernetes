@@ -36,35 +36,37 @@ func init() {
 // to allow building arbitrary schemes.
 func RegisterDeepCopies(scheme *runtime.Scheme) error {
 	return scheme.AddGeneratedDeepCopyFuncs(
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_v1_Job, InType: reflect.TypeOf(&Job{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_v1_JobCondition, InType: reflect.TypeOf(&JobCondition{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_v1_JobList, InType: reflect.TypeOf(&JobList{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_v1_JobSpec, InType: reflect.TypeOf(&JobSpec{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_v1_JobStatus, InType: reflect.TypeOf(&JobStatus{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyv1_Job, InType: reflect.TypeOf(&Job{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyv1_JobCondition, InType: reflect.TypeOf(&JobCondition{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyv1_JobList, InType: reflect.TypeOf(&JobList{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyv1_JobSpec, InType: reflect.TypeOf(&JobSpec{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyv1_JobStatus, InType: reflect.TypeOf(&JobStatus{})},
 	)
 }
 
-func DeepCopy_v1_Job(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyv1_Job ...
+func DeepCopyv1_Job(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*Job)
 		out := out.(*Job)
 		*out = *in
-		if newVal, err := c.DeepCopy(&in.ObjectMeta); err != nil {
-			return err
-		} else {
-			out.ObjectMeta = *newVal.(*meta_v1.ObjectMeta)
-		}
-		if err := DeepCopy_v1_JobSpec(&in.Spec, &out.Spec, c); err != nil {
+		newVal, err := c.DeepCopy(&in.ObjectMeta)
+		if err != nil {
 			return err
 		}
-		if err := DeepCopy_v1_JobStatus(&in.Status, &out.Status, c); err != nil {
+		out.ObjectMeta = *newVal.(*meta_v1.ObjectMeta)
+		if err := DeepCopyv1_JobSpec(&in.Spec, &out.Spec, c); err != nil {
+			return err
+		}
+		if err := DeepCopyv1_JobStatus(&in.Status, &out.Status, c); err != nil {
 			return err
 		}
 		return nil
 	}
 }
 
-func DeepCopy_v1_JobCondition(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyv1_JobCondition ...
+func DeepCopyv1_JobCondition(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*JobCondition)
 		out := out.(*JobCondition)
@@ -75,7 +77,8 @@ func DeepCopy_v1_JobCondition(in interface{}, out interface{}, c *conversion.Clo
 	}
 }
 
-func DeepCopy_v1_JobList(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyv1_JobList ...
+func DeepCopyv1_JobList(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*JobList)
 		out := out.(*JobList)
@@ -84,7 +87,7 @@ func DeepCopy_v1_JobList(in interface{}, out interface{}, c *conversion.Cloner) 
 			in, out := &in.Items, &out.Items
 			*out = make([]Job, len(*in))
 			for i := range *in {
-				if err := DeepCopy_v1_Job(&(*in)[i], &(*out)[i], c); err != nil {
+				if err := DeepCopyv1_Job(&(*in)[i], &(*out)[i], c); err != nil {
 					return err
 				}
 			}
@@ -93,7 +96,8 @@ func DeepCopy_v1_JobList(in interface{}, out interface{}, c *conversion.Cloner) 
 	}
 }
 
-func DeepCopy_v1_JobSpec(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyv1_JobSpec ...
+func DeepCopyv1_JobSpec(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*JobSpec)
 		out := out.(*JobSpec)
@@ -115,25 +119,27 @@ func DeepCopy_v1_JobSpec(in interface{}, out interface{}, c *conversion.Cloner) 
 		}
 		if in.Selector != nil {
 			in, out := &in.Selector, &out.Selector
-			if newVal, err := c.DeepCopy(*in); err != nil {
+			newVal, err := c.DeepCopy(*in)
+			if err != nil {
 				return err
-			} else {
-				*out = newVal.(*meta_v1.LabelSelector)
 			}
+			*out = newVal.(*meta_v1.LabelSelector)
+
 		}
 		if in.ManualSelector != nil {
 			in, out := &in.ManualSelector, &out.ManualSelector
 			*out = new(bool)
 			**out = **in
 		}
-		if err := api_v1.DeepCopy_v1_PodTemplateSpec(&in.Template, &out.Template, c); err != nil {
+		if err := api_v1.DeepCopyv1_PodTemplateSpec(&in.Template, &out.Template, c); err != nil {
 			return err
 		}
 		return nil
 	}
 }
 
-func DeepCopy_v1_JobStatus(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyv1_JobStatus ...
+func DeepCopyv1_JobStatus(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*JobStatus)
 		out := out.(*JobStatus)
@@ -142,7 +148,7 @@ func DeepCopy_v1_JobStatus(in interface{}, out interface{}, c *conversion.Cloner
 			in, out := &in.Conditions, &out.Conditions
 			*out = make([]JobCondition, len(*in))
 			for i := range *in {
-				if err := DeepCopy_v1_JobCondition(&(*in)[i], &(*out)[i], c); err != nil {
+				if err := DeepCopyv1_JobCondition(&(*in)[i], &(*out)[i], c); err != nil {
 					return err
 				}
 			}

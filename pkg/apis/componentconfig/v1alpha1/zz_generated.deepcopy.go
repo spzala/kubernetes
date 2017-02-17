@@ -35,22 +35,23 @@ func init() {
 // to allow building arbitrary schemes.
 func RegisterDeepCopies(scheme *runtime.Scheme) error {
 	return scheme.AddGeneratedDeepCopyFuncs(
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_v1alpha1_AdmissionConfiguration, InType: reflect.TypeOf(&AdmissionConfiguration{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_v1alpha1_AdmissionPluginConfiguration, InType: reflect.TypeOf(&AdmissionPluginConfiguration{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_v1alpha1_KubeProxyConfiguration, InType: reflect.TypeOf(&KubeProxyConfiguration{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_v1alpha1_KubeSchedulerConfiguration, InType: reflect.TypeOf(&KubeSchedulerConfiguration{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_v1alpha1_KubeletAnonymousAuthentication, InType: reflect.TypeOf(&KubeletAnonymousAuthentication{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_v1alpha1_KubeletAuthentication, InType: reflect.TypeOf(&KubeletAuthentication{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_v1alpha1_KubeletAuthorization, InType: reflect.TypeOf(&KubeletAuthorization{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_v1alpha1_KubeletConfiguration, InType: reflect.TypeOf(&KubeletConfiguration{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_v1alpha1_KubeletWebhookAuthentication, InType: reflect.TypeOf(&KubeletWebhookAuthentication{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_v1alpha1_KubeletWebhookAuthorization, InType: reflect.TypeOf(&KubeletWebhookAuthorization{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_v1alpha1_KubeletX509Authentication, InType: reflect.TypeOf(&KubeletX509Authentication{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_v1alpha1_LeaderElectionConfiguration, InType: reflect.TypeOf(&LeaderElectionConfiguration{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyv1alpha1_AdmissionConfiguration, InType: reflect.TypeOf(&AdmissionConfiguration{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyv1alpha1_AdmissionPluginConfiguration, InType: reflect.TypeOf(&AdmissionPluginConfiguration{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyv1alpha1_KubeProxyConfiguration, InType: reflect.TypeOf(&KubeProxyConfiguration{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyv1alpha1_KubeSchedulerConfiguration, InType: reflect.TypeOf(&KubeSchedulerConfiguration{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyv1alpha1_KubeletAnonymousAuthentication, InType: reflect.TypeOf(&KubeletAnonymousAuthentication{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyv1alpha1_KubeletAuthentication, InType: reflect.TypeOf(&KubeletAuthentication{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyv1alpha1_KubeletAuthorization, InType: reflect.TypeOf(&KubeletAuthorization{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyv1alpha1_KubeletConfiguration, InType: reflect.TypeOf(&KubeletConfiguration{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyv1alpha1_KubeletWebhookAuthentication, InType: reflect.TypeOf(&KubeletWebhookAuthentication{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyv1alpha1_KubeletWebhookAuthorization, InType: reflect.TypeOf(&KubeletWebhookAuthorization{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyv1alpha1_KubeletX509Authentication, InType: reflect.TypeOf(&KubeletX509Authentication{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyv1alpha1_LeaderElectionConfiguration, InType: reflect.TypeOf(&LeaderElectionConfiguration{})},
 	)
 }
 
-func DeepCopy_v1alpha1_AdmissionConfiguration(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyv1alpha1_AdmissionConfiguration ...
+func DeepCopyv1alpha1_AdmissionConfiguration(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*AdmissionConfiguration)
 		out := out.(*AdmissionConfiguration)
@@ -59,7 +60,7 @@ func DeepCopy_v1alpha1_AdmissionConfiguration(in interface{}, out interface{}, c
 			in, out := &in.Plugins, &out.Plugins
 			*out = make([]AdmissionPluginConfiguration, len(*in))
 			for i := range *in {
-				if err := DeepCopy_v1alpha1_AdmissionPluginConfiguration(&(*in)[i], &(*out)[i], c); err != nil {
+				if err := DeepCopyv1alpha1_AdmissionPluginConfiguration(&(*in)[i], &(*out)[i], c); err != nil {
 					return err
 				}
 			}
@@ -68,21 +69,23 @@ func DeepCopy_v1alpha1_AdmissionConfiguration(in interface{}, out interface{}, c
 	}
 }
 
-func DeepCopy_v1alpha1_AdmissionPluginConfiguration(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyv1alpha1_AdmissionPluginConfiguration ...
+func DeepCopyv1alpha1_AdmissionPluginConfiguration(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*AdmissionPluginConfiguration)
 		out := out.(*AdmissionPluginConfiguration)
 		*out = *in
-		if newVal, err := c.DeepCopy(&in.Configuration); err != nil {
+		newVal, err := c.DeepCopy(&in.Configuration)
+		if err != nil {
 			return err
-		} else {
-			out.Configuration = *newVal.(*runtime.RawExtension)
 		}
+		out.Configuration = *newVal.(*runtime.RawExtension)
 		return nil
 	}
 }
 
-func DeepCopy_v1alpha1_KubeProxyConfiguration(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyv1alpha1_KubeProxyConfiguration ...
+func DeepCopyv1alpha1_KubeProxyConfiguration(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*KubeProxyConfiguration)
 		out := out.(*KubeProxyConfiguration)
@@ -101,7 +104,8 @@ func DeepCopy_v1alpha1_KubeProxyConfiguration(in interface{}, out interface{}, c
 	}
 }
 
-func DeepCopy_v1alpha1_KubeSchedulerConfiguration(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyv1alpha1_KubeSchedulerConfiguration ...
+func DeepCopyv1alpha1_KubeSchedulerConfiguration(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*KubeSchedulerConfiguration)
 		out := out.(*KubeSchedulerConfiguration)
@@ -111,14 +115,15 @@ func DeepCopy_v1alpha1_KubeSchedulerConfiguration(in interface{}, out interface{
 			*out = new(bool)
 			**out = **in
 		}
-		if err := DeepCopy_v1alpha1_LeaderElectionConfiguration(&in.LeaderElection, &out.LeaderElection, c); err != nil {
+		if err := DeepCopyv1alpha1_LeaderElectionConfiguration(&in.LeaderElection, &out.LeaderElection, c); err != nil {
 			return err
 		}
 		return nil
 	}
 }
 
-func DeepCopy_v1alpha1_KubeletAnonymousAuthentication(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyv1alpha1_KubeletAnonymousAuthentication ...
+func DeepCopyv1alpha1_KubeletAnonymousAuthentication(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*KubeletAnonymousAuthentication)
 		out := out.(*KubeletAnonymousAuthentication)
@@ -132,22 +137,24 @@ func DeepCopy_v1alpha1_KubeletAnonymousAuthentication(in interface{}, out interf
 	}
 }
 
-func DeepCopy_v1alpha1_KubeletAuthentication(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyv1alpha1_KubeletAuthentication ...
+func DeepCopyv1alpha1_KubeletAuthentication(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*KubeletAuthentication)
 		out := out.(*KubeletAuthentication)
 		*out = *in
-		if err := DeepCopy_v1alpha1_KubeletWebhookAuthentication(&in.Webhook, &out.Webhook, c); err != nil {
+		if err := DeepCopyv1alpha1_KubeletWebhookAuthentication(&in.Webhook, &out.Webhook, c); err != nil {
 			return err
 		}
-		if err := DeepCopy_v1alpha1_KubeletAnonymousAuthentication(&in.Anonymous, &out.Anonymous, c); err != nil {
+		if err := DeepCopyv1alpha1_KubeletAnonymousAuthentication(&in.Anonymous, &out.Anonymous, c); err != nil {
 			return err
 		}
 		return nil
 	}
 }
 
-func DeepCopy_v1alpha1_KubeletAuthorization(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyv1alpha1_KubeletAuthorization ...
+func DeepCopyv1alpha1_KubeletAuthorization(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*KubeletAuthorization)
 		out := out.(*KubeletAuthorization)
@@ -156,7 +163,8 @@ func DeepCopy_v1alpha1_KubeletAuthorization(in interface{}, out interface{}, c *
 	}
 }
 
-func DeepCopy_v1alpha1_KubeletConfiguration(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyv1alpha1_KubeletConfiguration ...
+func DeepCopyv1alpha1_KubeletConfiguration(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*KubeletConfiguration)
 		out := out.(*KubeletConfiguration)
@@ -166,7 +174,7 @@ func DeepCopy_v1alpha1_KubeletConfiguration(in interface{}, out interface{}, c *
 			*out = new(bool)
 			**out = **in
 		}
-		if err := DeepCopy_v1alpha1_KubeletAuthentication(&in.Authentication, &out.Authentication, c); err != nil {
+		if err := DeepCopyv1alpha1_KubeletAuthentication(&in.Authentication, &out.Authentication, c); err != nil {
 			return err
 		}
 		if in.AllowPrivileged != nil {
@@ -258,7 +266,7 @@ func DeepCopy_v1alpha1_KubeletConfiguration(in interface{}, out interface{}, c *
 			in, out := &in.RegisterWithTaints, &out.RegisterWithTaints
 			*out = make([]v1.Taint, len(*in))
 			for i := range *in {
-				if err := v1.DeepCopy_v1_Taint(&(*in)[i], &(*out)[i], c); err != nil {
+				if err := v1.DeepCopyv1_Taint(&(*in)[i], &(*out)[i], c); err != nil {
 					return err
 				}
 			}
@@ -333,7 +341,8 @@ func DeepCopy_v1alpha1_KubeletConfiguration(in interface{}, out interface{}, c *
 	}
 }
 
-func DeepCopy_v1alpha1_KubeletWebhookAuthentication(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyv1alpha1_KubeletWebhookAuthentication ...
+func DeepCopyv1alpha1_KubeletWebhookAuthentication(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*KubeletWebhookAuthentication)
 		out := out.(*KubeletWebhookAuthentication)
@@ -347,7 +356,8 @@ func DeepCopy_v1alpha1_KubeletWebhookAuthentication(in interface{}, out interfac
 	}
 }
 
-func DeepCopy_v1alpha1_KubeletWebhookAuthorization(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyv1alpha1_KubeletWebhookAuthorization ...
+func DeepCopyv1alpha1_KubeletWebhookAuthorization(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*KubeletWebhookAuthorization)
 		out := out.(*KubeletWebhookAuthorization)
@@ -356,7 +366,8 @@ func DeepCopy_v1alpha1_KubeletWebhookAuthorization(in interface{}, out interface
 	}
 }
 
-func DeepCopy_v1alpha1_KubeletX509Authentication(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyv1alpha1_KubeletX509Authentication ...
+func DeepCopyv1alpha1_KubeletX509Authentication(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*KubeletX509Authentication)
 		out := out.(*KubeletX509Authentication)
@@ -365,7 +376,8 @@ func DeepCopy_v1alpha1_KubeletX509Authentication(in interface{}, out interface{}
 	}
 }
 
-func DeepCopy_v1alpha1_LeaderElectionConfiguration(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyv1alpha1_LeaderElectionConfiguration ...
+func DeepCopyv1alpha1_LeaderElectionConfiguration(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*LeaderElectionConfiguration)
 		out := out.(*LeaderElectionConfiguration)

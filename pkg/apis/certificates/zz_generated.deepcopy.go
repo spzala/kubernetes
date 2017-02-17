@@ -35,35 +35,37 @@ func init() {
 // to allow building arbitrary schemes.
 func RegisterDeepCopies(scheme *runtime.Scheme) error {
 	return scheme.AddGeneratedDeepCopyFuncs(
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_certificates_CertificateSigningRequest, InType: reflect.TypeOf(&CertificateSigningRequest{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_certificates_CertificateSigningRequestCondition, InType: reflect.TypeOf(&CertificateSigningRequestCondition{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_certificates_CertificateSigningRequestList, InType: reflect.TypeOf(&CertificateSigningRequestList{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_certificates_CertificateSigningRequestSpec, InType: reflect.TypeOf(&CertificateSigningRequestSpec{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_certificates_CertificateSigningRequestStatus, InType: reflect.TypeOf(&CertificateSigningRequestStatus{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopycertificates_CertificateSigningRequest, InType: reflect.TypeOf(&CertificateSigningRequest{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopycertificates_CertificateSigningRequestCondition, InType: reflect.TypeOf(&CertificateSigningRequestCondition{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopycertificates_CertificateSigningRequestList, InType: reflect.TypeOf(&CertificateSigningRequestList{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopycertificates_CertificateSigningRequestSpec, InType: reflect.TypeOf(&CertificateSigningRequestSpec{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopycertificates_CertificateSigningRequestStatus, InType: reflect.TypeOf(&CertificateSigningRequestStatus{})},
 	)
 }
 
-func DeepCopy_certificates_CertificateSigningRequest(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopycertificates_CertificateSigningRequest ...
+func DeepCopycertificates_CertificateSigningRequest(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*CertificateSigningRequest)
 		out := out.(*CertificateSigningRequest)
 		*out = *in
-		if newVal, err := c.DeepCopy(&in.ObjectMeta); err != nil {
-			return err
-		} else {
-			out.ObjectMeta = *newVal.(*v1.ObjectMeta)
-		}
-		if err := DeepCopy_certificates_CertificateSigningRequestSpec(&in.Spec, &out.Spec, c); err != nil {
+		newVal, err := c.DeepCopy(&in.ObjectMeta)
+		if err != nil {
 			return err
 		}
-		if err := DeepCopy_certificates_CertificateSigningRequestStatus(&in.Status, &out.Status, c); err != nil {
+		out.ObjectMeta = *newVal.(*v1.ObjectMeta)
+		if err := DeepCopycertificates_CertificateSigningRequestSpec(&in.Spec, &out.Spec, c); err != nil {
+			return err
+		}
+		if err := DeepCopycertificates_CertificateSigningRequestStatus(&in.Status, &out.Status, c); err != nil {
 			return err
 		}
 		return nil
 	}
 }
 
-func DeepCopy_certificates_CertificateSigningRequestCondition(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopycertificates_CertificateSigningRequestCondition ...
+func DeepCopycertificates_CertificateSigningRequestCondition(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*CertificateSigningRequestCondition)
 		out := out.(*CertificateSigningRequestCondition)
@@ -73,7 +75,8 @@ func DeepCopy_certificates_CertificateSigningRequestCondition(in interface{}, ou
 	}
 }
 
-func DeepCopy_certificates_CertificateSigningRequestList(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopycertificates_CertificateSigningRequestList ...
+func DeepCopycertificates_CertificateSigningRequestList(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*CertificateSigningRequestList)
 		out := out.(*CertificateSigningRequestList)
@@ -82,7 +85,7 @@ func DeepCopy_certificates_CertificateSigningRequestList(in interface{}, out int
 			in, out := &in.Items, &out.Items
 			*out = make([]CertificateSigningRequest, len(*in))
 			for i := range *in {
-				if err := DeepCopy_certificates_CertificateSigningRequest(&(*in)[i], &(*out)[i], c); err != nil {
+				if err := DeepCopycertificates_CertificateSigningRequest(&(*in)[i], &(*out)[i], c); err != nil {
 					return err
 				}
 			}
@@ -91,7 +94,8 @@ func DeepCopy_certificates_CertificateSigningRequestList(in interface{}, out int
 	}
 }
 
-func DeepCopy_certificates_CertificateSigningRequestSpec(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopycertificates_CertificateSigningRequestSpec ...
+func DeepCopycertificates_CertificateSigningRequestSpec(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*CertificateSigningRequestSpec)
 		out := out.(*CertificateSigningRequestSpec)
@@ -115,7 +119,8 @@ func DeepCopy_certificates_CertificateSigningRequestSpec(in interface{}, out int
 	}
 }
 
-func DeepCopy_certificates_CertificateSigningRequestStatus(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopycertificates_CertificateSigningRequestStatus ...
+func DeepCopycertificates_CertificateSigningRequestStatus(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*CertificateSigningRequestStatus)
 		out := out.(*CertificateSigningRequestStatus)
@@ -124,7 +129,7 @@ func DeepCopy_certificates_CertificateSigningRequestStatus(in interface{}, out i
 			in, out := &in.Conditions, &out.Conditions
 			*out = make([]CertificateSigningRequestCondition, len(*in))
 			for i := range *in {
-				if err := DeepCopy_certificates_CertificateSigningRequestCondition(&(*in)[i], &(*out)[i], c); err != nil {
+				if err := DeepCopycertificates_CertificateSigningRequestCondition(&(*in)[i], &(*out)[i], c); err != nil {
 					return err
 				}
 			}

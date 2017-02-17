@@ -35,18 +35,19 @@ func init() {
 // to allow building arbitrary schemes.
 func RegisterDeepCopies(scheme *runtime.Scheme) error {
 	return scheme.AddGeneratedDeepCopyFuncs(
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_v1_CrossVersionObjectReference, InType: reflect.TypeOf(&CrossVersionObjectReference{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_v1_HorizontalPodAutoscaler, InType: reflect.TypeOf(&HorizontalPodAutoscaler{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_v1_HorizontalPodAutoscalerList, InType: reflect.TypeOf(&HorizontalPodAutoscalerList{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_v1_HorizontalPodAutoscalerSpec, InType: reflect.TypeOf(&HorizontalPodAutoscalerSpec{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_v1_HorizontalPodAutoscalerStatus, InType: reflect.TypeOf(&HorizontalPodAutoscalerStatus{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_v1_Scale, InType: reflect.TypeOf(&Scale{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_v1_ScaleSpec, InType: reflect.TypeOf(&ScaleSpec{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_v1_ScaleStatus, InType: reflect.TypeOf(&ScaleStatus{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyv1_CrossVersionObjectReference, InType: reflect.TypeOf(&CrossVersionObjectReference{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyv1_HorizontalPodAutoscaler, InType: reflect.TypeOf(&HorizontalPodAutoscaler{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyv1_HorizontalPodAutoscalerList, InType: reflect.TypeOf(&HorizontalPodAutoscalerList{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyv1_HorizontalPodAutoscalerSpec, InType: reflect.TypeOf(&HorizontalPodAutoscalerSpec{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyv1_HorizontalPodAutoscalerStatus, InType: reflect.TypeOf(&HorizontalPodAutoscalerStatus{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyv1_Scale, InType: reflect.TypeOf(&Scale{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyv1_ScaleSpec, InType: reflect.TypeOf(&ScaleSpec{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyv1_ScaleStatus, InType: reflect.TypeOf(&ScaleStatus{})},
 	)
 }
 
-func DeepCopy_v1_CrossVersionObjectReference(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyv1_CrossVersionObjectReference ...
+func DeepCopyv1_CrossVersionObjectReference(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*CrossVersionObjectReference)
 		out := out.(*CrossVersionObjectReference)
@@ -55,27 +56,29 @@ func DeepCopy_v1_CrossVersionObjectReference(in interface{}, out interface{}, c 
 	}
 }
 
-func DeepCopy_v1_HorizontalPodAutoscaler(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyv1_HorizontalPodAutoscaler ...
+func DeepCopyv1_HorizontalPodAutoscaler(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*HorizontalPodAutoscaler)
 		out := out.(*HorizontalPodAutoscaler)
 		*out = *in
-		if newVal, err := c.DeepCopy(&in.ObjectMeta); err != nil {
-			return err
-		} else {
-			out.ObjectMeta = *newVal.(*meta_v1.ObjectMeta)
-		}
-		if err := DeepCopy_v1_HorizontalPodAutoscalerSpec(&in.Spec, &out.Spec, c); err != nil {
+		newVal, err := c.DeepCopy(&in.ObjectMeta)
+		if err != nil {
 			return err
 		}
-		if err := DeepCopy_v1_HorizontalPodAutoscalerStatus(&in.Status, &out.Status, c); err != nil {
+		out.ObjectMeta = *newVal.(*meta_v1.ObjectMeta)
+		if err := DeepCopyv1_HorizontalPodAutoscalerSpec(&in.Spec, &out.Spec, c); err != nil {
+			return err
+		}
+		if err := DeepCopyv1_HorizontalPodAutoscalerStatus(&in.Status, &out.Status, c); err != nil {
 			return err
 		}
 		return nil
 	}
 }
 
-func DeepCopy_v1_HorizontalPodAutoscalerList(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyv1_HorizontalPodAutoscalerList ...
+func DeepCopyv1_HorizontalPodAutoscalerList(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*HorizontalPodAutoscalerList)
 		out := out.(*HorizontalPodAutoscalerList)
@@ -84,7 +87,7 @@ func DeepCopy_v1_HorizontalPodAutoscalerList(in interface{}, out interface{}, c 
 			in, out := &in.Items, &out.Items
 			*out = make([]HorizontalPodAutoscaler, len(*in))
 			for i := range *in {
-				if err := DeepCopy_v1_HorizontalPodAutoscaler(&(*in)[i], &(*out)[i], c); err != nil {
+				if err := DeepCopyv1_HorizontalPodAutoscaler(&(*in)[i], &(*out)[i], c); err != nil {
 					return err
 				}
 			}
@@ -93,7 +96,8 @@ func DeepCopy_v1_HorizontalPodAutoscalerList(in interface{}, out interface{}, c 
 	}
 }
 
-func DeepCopy_v1_HorizontalPodAutoscalerSpec(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyv1_HorizontalPodAutoscalerSpec ...
+func DeepCopyv1_HorizontalPodAutoscalerSpec(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*HorizontalPodAutoscalerSpec)
 		out := out.(*HorizontalPodAutoscalerSpec)
@@ -112,7 +116,8 @@ func DeepCopy_v1_HorizontalPodAutoscalerSpec(in interface{}, out interface{}, c 
 	}
 }
 
-func DeepCopy_v1_HorizontalPodAutoscalerStatus(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyv1_HorizontalPodAutoscalerStatus ...
+func DeepCopyv1_HorizontalPodAutoscalerStatus(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*HorizontalPodAutoscalerStatus)
 		out := out.(*HorizontalPodAutoscalerStatus)
@@ -136,21 +141,23 @@ func DeepCopy_v1_HorizontalPodAutoscalerStatus(in interface{}, out interface{}, 
 	}
 }
 
-func DeepCopy_v1_Scale(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyv1_Scale ...
+func DeepCopyv1_Scale(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*Scale)
 		out := out.(*Scale)
 		*out = *in
-		if newVal, err := c.DeepCopy(&in.ObjectMeta); err != nil {
+		newVal, err := c.DeepCopy(&in.ObjectMeta)
+		if err != nil {
 			return err
-		} else {
-			out.ObjectMeta = *newVal.(*meta_v1.ObjectMeta)
 		}
+		out.ObjectMeta = *newVal.(*meta_v1.ObjectMeta)
 		return nil
 	}
 }
 
-func DeepCopy_v1_ScaleSpec(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyv1_ScaleSpec ...
+func DeepCopyv1_ScaleSpec(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*ScaleSpec)
 		out := out.(*ScaleSpec)
@@ -159,7 +166,8 @@ func DeepCopy_v1_ScaleSpec(in interface{}, out interface{}, c *conversion.Cloner
 	}
 }
 
-func DeepCopy_v1_ScaleStatus(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyv1_ScaleStatus ...
+func DeepCopyv1_ScaleStatus(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*ScaleStatus)
 		out := out.(*ScaleStatus)

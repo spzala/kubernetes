@@ -35,31 +35,33 @@ func init() {
 // to allow building arbitrary schemes.
 func RegisterDeepCopies(scheme *runtime.Scheme) error {
 	return scheme.AddGeneratedDeepCopyFuncs(
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_v1beta1_TokenReview, InType: reflect.TypeOf(&TokenReview{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_v1beta1_TokenReviewSpec, InType: reflect.TypeOf(&TokenReviewSpec{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_v1beta1_TokenReviewStatus, InType: reflect.TypeOf(&TokenReviewStatus{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_v1beta1_UserInfo, InType: reflect.TypeOf(&UserInfo{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyv1beta1_TokenReview, InType: reflect.TypeOf(&TokenReview{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyv1beta1_TokenReviewSpec, InType: reflect.TypeOf(&TokenReviewSpec{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyv1beta1_TokenReviewStatus, InType: reflect.TypeOf(&TokenReviewStatus{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyv1beta1_UserInfo, InType: reflect.TypeOf(&UserInfo{})},
 	)
 }
 
-func DeepCopy_v1beta1_TokenReview(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyv1beta1_TokenReview ...
+func DeepCopyv1beta1_TokenReview(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*TokenReview)
 		out := out.(*TokenReview)
 		*out = *in
-		if newVal, err := c.DeepCopy(&in.ObjectMeta); err != nil {
+		newVal, err := c.DeepCopy(&in.ObjectMeta)
+		if err != nil {
 			return err
-		} else {
-			out.ObjectMeta = *newVal.(*v1.ObjectMeta)
 		}
-		if err := DeepCopy_v1beta1_TokenReviewStatus(&in.Status, &out.Status, c); err != nil {
+		out.ObjectMeta = *newVal.(*v1.ObjectMeta)
+		if err := DeepCopyv1beta1_TokenReviewStatus(&in.Status, &out.Status, c); err != nil {
 			return err
 		}
 		return nil
 	}
 }
 
-func DeepCopy_v1beta1_TokenReviewSpec(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyv1beta1_TokenReviewSpec ...
+func DeepCopyv1beta1_TokenReviewSpec(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*TokenReviewSpec)
 		out := out.(*TokenReviewSpec)
@@ -68,19 +70,21 @@ func DeepCopy_v1beta1_TokenReviewSpec(in interface{}, out interface{}, c *conver
 	}
 }
 
-func DeepCopy_v1beta1_TokenReviewStatus(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyv1beta1_TokenReviewStatus ...
+func DeepCopyv1beta1_TokenReviewStatus(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*TokenReviewStatus)
 		out := out.(*TokenReviewStatus)
 		*out = *in
-		if err := DeepCopy_v1beta1_UserInfo(&in.User, &out.User, c); err != nil {
+		if err := DeepCopyv1beta1_UserInfo(&in.User, &out.User, c); err != nil {
 			return err
 		}
 		return nil
 	}
 }
 
-func DeepCopy_v1beta1_UserInfo(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyv1beta1_UserInfo ...
+func DeepCopyv1beta1_UserInfo(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*UserInfo)
 		out := out.(*UserInfo)
@@ -94,11 +98,11 @@ func DeepCopy_v1beta1_UserInfo(in interface{}, out interface{}, c *conversion.Cl
 			in, out := &in.Extra, &out.Extra
 			*out = make(map[string]ExtraValue)
 			for key, val := range *in {
-				if newVal, err := c.DeepCopy(&val); err != nil {
+				newVal, err := c.DeepCopy(&val)
+				if err != nil {
 					return err
-				} else {
-					(*out)[key] = *newVal.(*ExtraValue)
 				}
+				(*out)[key] = *newVal.(*ExtraValue)
 			}
 		}
 		return nil

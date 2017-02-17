@@ -36,34 +36,36 @@ func init() {
 // to allow building arbitrary schemes.
 func RegisterDeepCopies(scheme *runtime.Scheme) error {
 	return scheme.AddGeneratedDeepCopyFuncs(
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_apps_StatefulSet, InType: reflect.TypeOf(&StatefulSet{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_apps_StatefulSetList, InType: reflect.TypeOf(&StatefulSetList{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_apps_StatefulSetSpec, InType: reflect.TypeOf(&StatefulSetSpec{})},
-		conversion.GeneratedDeepCopyFunc{Fn: DeepCopy_apps_StatefulSetStatus, InType: reflect.TypeOf(&StatefulSetStatus{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyapps_StatefulSet, InType: reflect.TypeOf(&StatefulSet{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyapps_StatefulSetList, InType: reflect.TypeOf(&StatefulSetList{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyapps_StatefulSetSpec, InType: reflect.TypeOf(&StatefulSetSpec{})},
+		conversion.GeneratedDeepCopyFunc{Fn: DeepCopyapps_StatefulSetStatus, InType: reflect.TypeOf(&StatefulSetStatus{})},
 	)
 }
 
-func DeepCopy_apps_StatefulSet(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyapps_StatefulSet ...
+func DeepCopyapps_StatefulSet(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*StatefulSet)
 		out := out.(*StatefulSet)
 		*out = *in
-		if newVal, err := c.DeepCopy(&in.ObjectMeta); err != nil {
-			return err
-		} else {
-			out.ObjectMeta = *newVal.(*v1.ObjectMeta)
-		}
-		if err := DeepCopy_apps_StatefulSetSpec(&in.Spec, &out.Spec, c); err != nil {
+		newVal, err := c.DeepCopy(&in.ObjectMeta)
+		if err != nil {
 			return err
 		}
-		if err := DeepCopy_apps_StatefulSetStatus(&in.Status, &out.Status, c); err != nil {
+		out.ObjectMeta = *newVal.(*v1.ObjectMeta)
+		if err := DeepCopyapps_StatefulSetSpec(&in.Spec, &out.Spec, c); err != nil {
+			return err
+		}
+		if err := DeepCopyapps_StatefulSetStatus(&in.Status, &out.Status, c); err != nil {
 			return err
 		}
 		return nil
 	}
 }
 
-func DeepCopy_apps_StatefulSetList(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyapps_StatefulSetList ...
+func DeepCopyapps_StatefulSetList(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*StatefulSetList)
 		out := out.(*StatefulSetList)
@@ -72,7 +74,7 @@ func DeepCopy_apps_StatefulSetList(in interface{}, out interface{}, c *conversio
 			in, out := &in.Items, &out.Items
 			*out = make([]StatefulSet, len(*in))
 			for i := range *in {
-				if err := DeepCopy_apps_StatefulSet(&(*in)[i], &(*out)[i], c); err != nil {
+				if err := DeepCopyapps_StatefulSet(&(*in)[i], &(*out)[i], c); err != nil {
 					return err
 				}
 			}
@@ -81,27 +83,29 @@ func DeepCopy_apps_StatefulSetList(in interface{}, out interface{}, c *conversio
 	}
 }
 
-func DeepCopy_apps_StatefulSetSpec(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyapps_StatefulSetSpec ...
+func DeepCopyapps_StatefulSetSpec(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*StatefulSetSpec)
 		out := out.(*StatefulSetSpec)
 		*out = *in
 		if in.Selector != nil {
 			in, out := &in.Selector, &out.Selector
-			if newVal, err := c.DeepCopy(*in); err != nil {
+			newVal, err := c.DeepCopy(*in)
+			if err != nil {
 				return err
-			} else {
-				*out = newVal.(*v1.LabelSelector)
 			}
+			*out = newVal.(*v1.LabelSelector)
+
 		}
-		if err := api.DeepCopy_api_PodTemplateSpec(&in.Template, &out.Template, c); err != nil {
+		if err := api.DeepCopyapi_PodTemplateSpec(&in.Template, &out.Template, c); err != nil {
 			return err
 		}
 		if in.VolumeClaimTemplates != nil {
 			in, out := &in.VolumeClaimTemplates, &out.VolumeClaimTemplates
 			*out = make([]api.PersistentVolumeClaim, len(*in))
 			for i := range *in {
-				if err := api.DeepCopy_api_PersistentVolumeClaim(&(*in)[i], &(*out)[i], c); err != nil {
+				if err := api.DeepCopyapi_PersistentVolumeClaim(&(*in)[i], &(*out)[i], c); err != nil {
 					return err
 				}
 			}
@@ -110,7 +114,8 @@ func DeepCopy_apps_StatefulSetSpec(in interface{}, out interface{}, c *conversio
 	}
 }
 
-func DeepCopy_apps_StatefulSetStatus(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyapps_StatefulSetStatus ...
+func DeepCopyapps_StatefulSetStatus(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*StatefulSetStatus)
 		out := out.(*StatefulSetStatus)

@@ -28,13 +28,14 @@ import (
 // GetGeneratedDeepCopyFuncs returns the generated funcs, since we aren't registering them.
 func GetGeneratedDeepCopyFuncs() []conversion.GeneratedDeepCopyFunc {
 	return []conversion.GeneratedDeepCopyFunc{
-		{Fn: DeepCopy_runtime_RawExtension, InType: reflect.TypeOf(&RawExtension{})},
-		{Fn: DeepCopy_runtime_TypeMeta, InType: reflect.TypeOf(&TypeMeta{})},
-		{Fn: DeepCopy_runtime_Unknown, InType: reflect.TypeOf(&Unknown{})},
+		{Fn: DeepCopyruntime_RawExtension, InType: reflect.TypeOf(&RawExtension{})},
+		{Fn: DeepCopyruntime_TypeMeta, InType: reflect.TypeOf(&TypeMeta{})},
+		{Fn: DeepCopyruntime_Unknown, InType: reflect.TypeOf(&Unknown{})},
 	}
 }
 
-func DeepCopy_runtime_RawExtension(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyruntime_RawExtension ...
+func DeepCopyruntime_RawExtension(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*RawExtension)
 		out := out.(*RawExtension)
@@ -46,17 +47,18 @@ func DeepCopy_runtime_RawExtension(in interface{}, out interface{}, c *conversio
 		}
 		// in.Object is kind 'Interface'
 		if in.Object != nil {
-			if newVal, err := c.DeepCopy(&in.Object); err != nil {
+			newVal, err := c.DeepCopy(&in.Object)
+			if err != nil {
 				return err
-			} else {
-				out.Object = *newVal.(*Object)
 			}
+			out.Object = *newVal.(*Object)
 		}
 		return nil
 	}
 }
 
-func DeepCopy_runtime_TypeMeta(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyruntime_TypeMeta ...
+func DeepCopyruntime_TypeMeta(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*TypeMeta)
 		out := out.(*TypeMeta)
@@ -65,7 +67,8 @@ func DeepCopy_runtime_TypeMeta(in interface{}, out interface{}, c *conversion.Cl
 	}
 }
 
-func DeepCopy_runtime_Unknown(in interface{}, out interface{}, c *conversion.Cloner) error {
+// DeepCopyruntime_Unknown ...
+func DeepCopyruntime_Unknown(in interface{}, out interface{}, c *conversion.Cloner) error {
 	{
 		in := in.(*Unknown)
 		out := out.(*Unknown)
